@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.ForgotPassFragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/quiz"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"/>
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/edtfotgotpass"
+        android:background="@drawable/edt_style1"
+        android:hint="Email"
+        android:padding="5dp"
+        android:drawableLeft="@drawable/ic_email"
+        />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"/>
+    \
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edt_style"
+        android:text="Reset Password"
+        android:id="@+id/resetpassbtn"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
