@@ -62,4 +62,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
 
+    implementation ("com.squareup.retrofit2:retrofit:2.6.2")
+    implementation ("com.squareup.retrofit:converter-gson:2.0.0-beta2")
+    implementation ("com.google.code.gson:gson:2.6.2")
+
 }

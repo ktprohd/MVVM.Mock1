@@ -1,7 +1,6 @@
 package com.example.mvvmmock1.view
 
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -11,15 +10,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.mvvmmock1.R
-import com.example.mvvmmock1.databinding.FragmentLoginBinding
 import com.example.mvvmmock1.databinding.FragmentQuizBinding
 import com.example.mvvmmock1.model.Score
-import com.example.mvvmmock1.model.User
+import com.example.mvvmmock1.model.Question
 import com.example.mvvmmock1.viewmodel.QuizViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -36,7 +33,7 @@ class QuizFragment : Fragment() {
     var result:String? =""
     val email1 = Firebase.auth.currentUser
     private val userViewModel: QuizViewModel by viewModels()
-    var myList = ArrayList<User>()
+    var myList = ArrayList<Question>()
     val database = Firebase.database
     val myRefscore = database.getReference("Score")
 
@@ -58,7 +55,7 @@ class QuizFragment : Fragment() {
             myList=users
             if (myList.isNotEmpty()) {
                 readQuiz(0)
-                result = myList[0].Dapan
+                result = myList[0].trueAnswer
                 setProgessBar()}
         })
         timer()
@@ -66,18 +63,17 @@ class QuizFragment : Fragment() {
     }
 
     fun readQuiz(i:Int){
-        binding.edtquestion.text=myList[i].cauhoi
-        binding.btna.text=myList[i].A
-        binding.btnb.text=myList[i].B
-        binding.btnc.text=myList[i].C
-        binding.btnd.text=myList[i].D
-        result=myList[i].Dapan
+        binding.edtquestion.text=myList[i].question
+        binding.btna.text=myList[i].answer1
+        binding.btnb.text=myList[i].answer2
+        binding.btnc.text=myList[i].answer3
+        binding.btnd.text=myList[i].answer4
+        result=myList[i].trueAnswer
     }
 
     fun onClick(){
 
         binding.btnnext.setOnClickListener {
-            handler.post {
                 resetButton()
                 setButtonEnable()
                 timer()
@@ -87,9 +83,9 @@ class QuizFragment : Fragment() {
                     readQuiz(i)
                     i++}
                 else{
+                    i=1
                     alertDialog()
                 }
-            }
         }
 
         binding.btna.setOnClickListener {

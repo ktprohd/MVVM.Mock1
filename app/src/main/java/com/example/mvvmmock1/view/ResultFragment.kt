@@ -1,7 +1,6 @@
 package com.example.mvvmmock1.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,6 @@ import androidx.lifecycle.Observer
 import com.example.mvvmmock1.R
 import com.example.mvvmmock1.databinding.FragmentResultBinding
 import com.example.mvvmmock1.model.Score
-import com.example.mvvmmock1.model.User
 import com.example.mvvmmock1.viewmodel.QuizViewModel
 
 class ResultFragment : Fragment() {
@@ -35,12 +33,13 @@ class ResultFragment : Fragment() {
             myList = users
 
             if (myList.isNotEmpty()) {
-                binding.txvcorrect1.text=myList[0].correct1.toString()
+                binding.txvcorrect1.text=myList[0].numOfCorrect.toString()
+                binding.txvwrong1.text=(3-myList[0].numOfCorrect).toString()
             }
         })
 
         binding.btnexit.setOnClickListener {
-
+            activity?.finish()
         }
 
         binding.btnplayagain.setOnClickListener {

@@ -31,5 +31,10 @@ class SignupFragment : Fragment() {
             transaction?.replace(R.id.fragment_section, LoginFragment())
             transaction?.commit()
         }
+        binding.callapi.setOnClickListener {
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragment_section, ApiFragment())
+            transaction?.commit()
+        }
     }
 }
